@@ -1,13 +1,19 @@
 1. Write an SQL query to fetch “FIRST_NAME” from Worker table using the alias name as <WORKER_NAME> 
 
 
-Fetch FIRST_NAME using alias WORKER_NAME
+##Fetch FIRST_NAME using alias WORKER_NAME
 SELECT FIRST_NAME AS WORKER_NAME
 FROM Worker;
 
 
 2. Write an SQL query to fetch unique values of DEPARTMENT from Worker table.
 
-Fetch unique DEPARTMENT values
+##Fetch unique DEPARTMENT values
 SELECT DISTINCT DEPARTMENT
 FROM Worker;
+
+3. Write an SQL query to print details for Workers with the first name as “Vipul” and “Satish” from Worker table. (without OR condition)
+
+SELECT *
+FROM Worker
+WHERE FIRST_NAME IN ('Vipul', 'Satish');
