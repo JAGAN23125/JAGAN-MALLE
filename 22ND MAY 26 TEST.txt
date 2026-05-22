@@ -23,3 +23,9 @@ WHERE FIRST_NAME IN ('Vipul', 'Satish');
 SELECT *
 FROM Worker
 WHERE FIRST_NAME LIKE '%a%';
+
+5. Write an SQL query to print details of the Workers whose FIRST_NAME ends with ‘a’.
+
+SELECT *
+FROM Worker
+WHERE FIRST_NAME LIKE '%a';
