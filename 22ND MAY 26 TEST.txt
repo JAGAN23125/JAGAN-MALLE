@@ -36,3 +36,9 @@ SELECT *
 FROM Worker
 WHERE DEPARTMENT = 'Admin'
 AND SALARY BETWEEN 100000 AND 500000;
+
+7. Write an SQL query to fetch the count of employees working in the department ‘Admin’.
+
+SELECT COUNT(*) AS Admin_Count
+FROM Worker
+WHERE DEPARTMENT = 'Admin';
