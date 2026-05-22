@@ -17,3 +17,9 @@ FROM Worker;
 SELECT *
 FROM Worker
 WHERE FIRST_NAME IN ('Vipul', 'Satish');
+
+4. Write an SQL query to print details of the Workers whose FIRST_NAME contains ‘a’.
+
+SELECT *
+FROM Worker
+WHERE FIRST_NAME LIKE '%a%';
