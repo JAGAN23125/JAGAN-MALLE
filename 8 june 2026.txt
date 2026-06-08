@@ -181,3 +181,98 @@ After Update
   dept: "CS",
   scholarship: false
 }
+
+10. Increment marks of student with _id: 6 by 10 using $inc
+
+db.students.updateOne(
+   { _id: 6 },
+   {
+      $inc: {
+         marks: 10
+      }
+   }
+)
+Explanation
+Current Marks = 55
+After Update  = 65
+
+11. Find the 3rd and 4th highest scoring students using sort, skip, and limit
+
+db.students.find()
+.sort({ marks: -1 })
+.skip(2)
+.limit(2)
+Explanation
+sort({marks:-1}) → Highest to Lowest
+skip(2)          → Skip top 2 students
+limit(2)         → Get next 2 students
+Sorted Marks
+Meena   - 95
+Suresh  - 90
+Ananya  - 88   ← 3rd
+Kavya   - 82   ← 4th
+Priya   - 79
+Arjun   - 74
+Rekha   - 68
+Ravi    - 61
+Dinesh  - 55
+Vijay   - 45
+
+12. Find employees whose salary is greater than 50000 and experience greater than 5
+db.employees.find({
+   salary: { $gt: 50000 },
+   experience: { $gt: 5 }
+})
+Output
+Rahul
+Karthik
+
+13. Find employees whose skills array size is greater than 2
+
+MongoDB doesn't support $size > 2 directly, so use aggregation:
+
+db.employees.aggregate([
+{
+   $match: {
+      $expr: {
+         $gt: [
+            { $size: "$skills" },
+            2
+         ]
+      }
+   }
+}
+])
+Output
+Arun
+Rahul
+Karthik
+
+(All have 3 skills)
+
+14. Find departments whose average salary is greater than 50000
+
+db.employees.aggregate([
+{
+   $group: {
+      _id: "$department",
+      avgSalary: {
+         $avg: "$salary"
+      }
+   }
+},
+{
+   $match: {
+      avgSalary: { $gt: 50000 }
+   }
+}
+])
+Expected Output
+{
+   _id: "IT",
+   avgSalary: 62666.67
+}
+{
+   _id: "HR",
+   avgSalary: 55000
+}
