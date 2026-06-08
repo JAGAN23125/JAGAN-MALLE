@@ -98,10 +98,6 @@ db.products.aggregate([
     }
 }
 ])
-Explanation
-$multiply → price × sold
-$sum      → adds revenue of all products
-$group    → groups by category
 Expected Result
 {
   "_id": "Electronics",
@@ -291,23 +287,6 @@ db.employees.aggregate([
    }
 }
 ])
-Expected Output
-{
-  _id: "IT",
-  minSalary: 45000
-}
-{
-  _id: "HR",
-  minSalary: 55000
-}
-{
-  _id: "Finance",
-  minSalary: 50000
-}
-{
-  _id: "Marketing",
-  minSalary: 42000
-}
 
 16. Rename field city to location
 
